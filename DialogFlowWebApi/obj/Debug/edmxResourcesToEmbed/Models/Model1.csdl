@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DialogflowDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="drugs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="isDrugs" Type="Boolean" Nullable="false" />
+    <Property Name="nameDrug" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="idPerson" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PersonDetails" Relationship="Self.FK_drugs_PersonDetails" FromRole="drugs" ToRole="PersonDetails" />
+  </EntityType>
+  <EntityType Name="generalFeeling">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPerson" Type="Int32" Nullable="false" />
+    <Property Name="describe" Type="String" MaxLength="8000" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PersonDetails" Relationship="Self.FK_generalFeeling_PersonDetails" FromRole="generalFeeling" ToRole="PersonDetails" />
+  </EntityType>
+  <EntityType Name="MedicalHistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="obesity" Type="Boolean" />
+    <Property Name="exercise" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="symptoms" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="timePeriod" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="idPerson" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PersonDetails" Relationship="Self.FK_MedicalHistory_PersonDetails" FromRole="MedicalHistory" ToRole="PersonDetails" />
+  </EntityType>
+  <EntityType Name="obesityAndExercise">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Exercise" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="obesity" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ExerciseOften" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="dateExercise" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="idPerson" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="PersonDetails" Relationship="Self.FK_obesityAndExercise_PersonDetails" FromRole="obesityAndExercise" ToRole="PersonDetails" />
+  </EntityType>
+  <EntityType Name="PersonDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="age" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="drugs" Relationship="Self.FK_drugs_PersonDetails" FromRole="PersonDetails" ToRole="drugs" />
+    <NavigationProperty Name="generalFeeling" Relationship="Self.FK_generalFeeling_PersonDetails" FromRole="PersonDetails" ToRole="generalFeeling" />
+    <NavigationProperty Name="MedicalHistory" Relationship="Self.FK_MedicalHistory_PersonDetails" FromRole="PersonDetails" ToRole="MedicalHistory" />
+    <NavigationProperty Name="obesityAndExercise" Relationship="Self.FK_obesityAndExercise_PersonDetails" FromRole="PersonDetails" ToRole="obesityAndExercise" />
+    <NavigationProperty Name="smoking" Relationship="Self.FK_smoking_PersonDetails" FromRole="PersonDetails" ToRole="smoking" />
+  </EntityType>
+  <EntityType Name="smoking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="isSmoking" Type="Boolean" Nullable="false" />
+    <Property Name="often" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="idPerson" Type="Int32" Nullable="false" />
+    <Property Name="amountType" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="PersonDetails" Relationship="Self.FK_smoking_PersonDetails" FromRole="smoking" ToRole="PersonDetails" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_drugs_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="drugs" Type="Self.drugs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="drugs">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_generalFeeling_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="generalFeeling" Type="Self.generalFeeling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="generalFeeling">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalHistory_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="MedicalHistory" Type="Self.MedicalHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MedicalHistory">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_obesityAndExercise_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="obesityAndExercise" Type="Self.obesityAndExercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="obesityAndExercise">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_smoking_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="smoking" Type="Self.smoking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="smoking">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DialogflowDataEntities7" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="drugs" EntityType="Self.drugs" />
+    <EntitySet Name="generalFeeling" EntityType="Self.generalFeeling" />
+    <EntitySet Name="MedicalHistory" EntityType="Self.MedicalHistory" />
+    <EntitySet Name="obesityAndExercise" EntityType="Self.obesityAndExercise" />
+    <EntitySet Name="PersonDetails" EntityType="Self.PersonDetails" />
+    <EntitySet Name="smoking" EntityType="Self.smoking" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_drugs_PersonDetails" Association="Self.FK_drugs_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="drugs" EntitySet="drugs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_generalFeeling_PersonDetails" Association="Self.FK_generalFeeling_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="generalFeeling" EntitySet="generalFeeling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalHistory_PersonDetails" Association="Self.FK_MedicalHistory_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="MedicalHistory" EntitySet="MedicalHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_obesityAndExercise_PersonDetails" Association="Self.FK_obesityAndExercise_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="obesityAndExercise" EntitySet="obesityAndExercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_smoking_PersonDetails" Association="Self.FK_smoking_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="smoking" EntitySet="smoking" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

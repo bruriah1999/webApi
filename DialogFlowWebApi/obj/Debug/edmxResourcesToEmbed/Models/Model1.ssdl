@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DialogflowDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="drugs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isDrugs" Type="bit" Nullable="false" />
+    <Property Name="nameDrug" Type="char" MaxLength="50" />
+    <Property Name="idPerson" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="generalFeeling">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idPerson" Type="int" Nullable="false" />
+    <Property Name="describe" Type="char" MaxLength="8000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MedicalHistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="obesity" Type="bit" />
+    <Property Name="exercise" Type="char" MaxLength="50" />
+    <Property Name="symptoms" Type="char" MaxLength="50" />
+    <Property Name="timePeriod" Type="char" MaxLength="50" />
+    <Property Name="idPerson" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="obesityAndExercise">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Exercise" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="obesity" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="ExerciseOften" Type="char" MaxLength="50" />
+    <Property Name="dateExercise" Type="char" MaxLength="50" />
+    <Property Name="idPerson" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="age" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="gender" Type="char" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="smoking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="isSmoking" Type="bit" Nullable="false" />
+    <Property Name="often" Type="char" MaxLength="50" />
+    <Property Name="brand" Type="char" MaxLength="50" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idPerson" Type="int" Nullable="false" />
+    <Property Name="amountType" Type="char" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_drugs_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="drugs" Type="Self.drugs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="drugs">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_generalFeeling_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="generalFeeling" Type="Self.generalFeeling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="generalFeeling">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalHistory_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="MedicalHistory" Type="Self.MedicalHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MedicalHistory">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_obesityAndExercise_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="obesityAndExercise" Type="Self.obesityAndExercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="obesityAndExercise">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_smoking_PersonDetails">
+    <End Role="PersonDetails" Type="Self.PersonDetails" Multiplicity="1" />
+    <End Role="smoking" Type="Self.smoking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="smoking">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DialogflowDataModelStoreContainer">
+    <EntitySet Name="drugs" EntityType="Self.drugs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="generalFeeling" EntityType="Self.generalFeeling" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MedicalHistory" EntityType="Self.MedicalHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="obesityAndExercise" EntityType="Self.obesityAndExercise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonDetails" EntityType="Self.PersonDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="smoking" EntityType="Self.smoking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_drugs_PersonDetails" Association="Self.FK_drugs_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="drugs" EntitySet="drugs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_generalFeeling_PersonDetails" Association="Self.FK_generalFeeling_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="generalFeeling" EntitySet="generalFeeling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalHistory_PersonDetails" Association="Self.FK_MedicalHistory_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="MedicalHistory" EntitySet="MedicalHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_obesityAndExercise_PersonDetails" Association="Self.FK_obesityAndExercise_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="obesityAndExercise" EntitySet="obesityAndExercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_smoking_PersonDetails" Association="Self.FK_smoking_PersonDetails">
+      <End Role="PersonDetails" EntitySet="PersonDetails" />
+      <End Role="smoking" EntitySet="smoking" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
