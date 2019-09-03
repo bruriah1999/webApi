@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogFlowWebApi", "DialogFlowWebApi\DialogFlowWebApi.csproj", "{89F4B720-2013-456C-884F-FB331CB43AD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Dal\Dal.csproj", "{CAEE6A5B-D00A-46E3-8F67-A8559212666F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{89F4B720-2013-456C-884F-FB331CB43AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89F4B720-2013-456C-884F-FB331CB43AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89F4B720-2013-456C-884F-FB331CB43AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAEE6A5B-D00A-46E3-8F67-A8559212666F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAEE6A5B-D00A-46E3-8F67-A8559212666F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAEE6A5B-D00A-46E3-8F67-A8559212666F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAEE6A5B-D00A-46E3-8F67-A8559212666F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,31 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DialogFlowWebApi.Models
+namespace Dal
 {
     using System;
     using System.Collections.Generic;
     
     public partial class users
     {
-
-
-
-
         public int id { get; set; }
         public string name { get; set; }
         public string age { get; set; }
         public string gender { get; set; }
-        public string isDiabetes { get; set; }
-        public string isCholesterol { get; set; }
+        public bool isDiabetes { get; set; }
+        public bool isCholesterol { get; set; }
         public string heart_disease { get; set; }
-        public string isObesity { get; set; }
-        public string isExercise { get; set; }
+        public bool isObesity { get; set; }
+        public bool isExercise { get; set; }
         public string exerciseOften { get; set; }
         public string dateExercise { get; set; }
-        public string isDrug { get; set; }
+        public bool isDrug { get; set; }
         public string nameDrug { get; set; }
-        public string isSmoking { get; set; }
+        public bool isSmoking { get; set; }
         public string oftenSmoke { get; set; }
         public string brandSmoke { get; set; }
         public string amountTypeSmoke { get; set; }

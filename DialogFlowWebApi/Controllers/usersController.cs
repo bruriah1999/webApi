@@ -1,5 +1,4 @@
-﻿using DialogFlowWebApi.Models;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,34 +6,25 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-
+using Dal;
 namespace DialogFlowWebApi.Controllers
 {
 
     [RoutePrefix("api/users")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class usersController : ApiController
+    public  class usersController : ApiController
     {
         [HttpGet]
         [Route("getUser/{id}")]
-        public users Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            using (DialogflowDataEntities9 db = new DialogflowDataEntities9())
-            {
-                try
-                {
-                    users pd = db.users.SingleOrDefault(e => e.id == id);
-                    return pd;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
+         return  Ok(Class1.Get(id));
+
+                
         }
         [HttpPost]
         [Route("saveUser")]
-        public void Post([FromBody] JObject pd)
+        public IHttpActionResult Post([FromBody] JObject pd)
         {
 
             users user = new users();
@@ -56,20 +46,10 @@ namespace DialogFlowWebApi.Controllers
             user.brandSmoke=(string)pd.SelectToken("brandSmoke");
             user.amountTypeSmoke=(string)pd.SelectToken("amountTypeSmoke");
             user.amountSmoke=(string)pd.SelectToken("amountSmoke");
-            using (DialogflowDataEntities9 db = new DialogflowDataEntities9())
-            {
-                try
-                {
-                    db.users.Add(user);
-                    db.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
-            }
+            if (Class1.Post(user))
+                return Ok();
+            else
+                return BadRequest();
         }
 
 

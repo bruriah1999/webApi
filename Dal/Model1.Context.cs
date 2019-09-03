@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DialogFlowWebApi.Models
+namespace Dal
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DialogflowDataEntities9 : DbContext
+    public partial class DialogflowDataEntities : DbContext
     {
-        public DialogflowDataEntities9()
-            : base("name=DialogflowDataEntities9")
+        public DialogflowDataEntities()
+            : base("name=DialogflowDataEntities")
         {
         }
     
@@ -25,7 +25,6 @@ namespace DialogFlowWebApi.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<users> users { get; set; }
     }
 }

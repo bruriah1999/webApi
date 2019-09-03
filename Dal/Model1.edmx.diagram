@@ -4,8 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0fae32f9165342bda00200fb2d477a73" Name="Diagram1">
-        <EntityTypeShape EntityType="DialogflowDataModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="29d0ce1589874737a943b8ea4415224d" Name="Diagram1">
         <EntityTypeShape EntityType="DialogflowDataModel.users" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
