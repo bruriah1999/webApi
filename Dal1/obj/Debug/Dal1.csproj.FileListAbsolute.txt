@@ -1,0 +1,14 @@
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\obj\Debug\Dal1.csproj.CoreCompileInputs.cache
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\Dal1.dll.config
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\Dal1.dll
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\Dal1.pdb
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\EntityFramework.dll
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\EntityFramework.xml
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\obj\Debug\Dal1.csproj.CopyComplete
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\obj\Debug\Dal1.dll
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\obj\Debug\Dal1.pdb
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\תהילה\Desktop\dialogflow database\DialogFlowWebApi\Dal1\obj\Debug\Dal1.csprojAssemblyReference.cache

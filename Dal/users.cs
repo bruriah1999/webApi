@@ -18,19 +18,29 @@ namespace Dal
         public string name { get; set; }
         public string age { get; set; }
         public string gender { get; set; }
-        public bool isDiabetes { get; set; }
-        public bool isCholesterol { get; set; }
+        public Nullable<bool> isDiabetes { get; set; }
+        public Nullable<bool> isCholesterol { get; set; }
         public string heart_disease { get; set; }
-        public bool isObesity { get; set; }
-        public bool isExercise { get; set; }
+        public Nullable<bool> isObesity { get; set; }
+        public Nullable<bool> isExercise { get; set; }
         public string exerciseOften { get; set; }
         public string dateExercise { get; set; }
-        public bool isDrug { get; set; }
+        public Nullable<bool> isDrug { get; set; }
         public string nameDrug { get; set; }
-        public bool isSmoking { get; set; }
+        public Nullable<bool> isSmoking { get; set; }
         public string oftenSmoke { get; set; }
         public string brandSmoke { get; set; }
         public string amountTypeSmoke { get; set; }
         public string amountSmoke { get; set; }
+        public string painLevel { get; set; }
+        public string feeling { get; set; }
+        public string bloodPressure { get; set; }
+        public string trauma { get; set; }
+        public string vomitAmount { get; set; }
+        public string feverDgree { get; set; }
+        public string painLocation { get; set; }
+        public string timeOfPain { get; set; }
+        public string havaFever { get; set; }
+        public string disease { get; set; }
     }
 }

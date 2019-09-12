@@ -13,10 +13,10 @@ namespace Dal
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DialogflowDataEntities : DbContext
+    public partial class DialogflowDataEntities1 : DbContext
     {
-        public DialogflowDataEntities()
-            : base("name=DialogflowDataEntities")
+        public DialogflowDataEntities1()
+            : base("name=DialogflowDataEntities1")
         {
         }
     
@@ -25,6 +25,7 @@ namespace Dal
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<users> users { get; set; }
     }
 }

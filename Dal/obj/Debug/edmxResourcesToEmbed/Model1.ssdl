@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DialogflowDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="char" MaxLength="50" />
+    <Property Name="age" Type="char" MaxLength="50" />
+    <Property Name="gender" Type="char" MaxLength="50" />
+    <Property Name="isDiabetes" Type="bit" />
+    <Property Name="isCholesterol" Type="bit" />
+    <Property Name="heart_disease" Type="char" MaxLength="50" />
+    <Property Name="isObesity" Type="bit" />
+    <Property Name="isExercise" Type="bit" />
+    <Property Name="exerciseOften" Type="char" MaxLength="50" />
+    <Property Name="dateExercise" Type="char" MaxLength="50" />
+    <Property Name="isDrug" Type="bit" />
+    <Property Name="nameDrug" Type="char" MaxLength="50" />
+    <Property Name="isSmoking" Type="bit" />
+    <Property Name="oftenSmoke" Type="char" MaxLength="50" />
+    <Property Name="brandSmoke" Type="char" MaxLength="50" />
+    <Property Name="amountTypeSmoke" Type="char" MaxLength="50" />
+    <Property Name="amountSmoke" Type="char" MaxLength="50" />
+    <Property Name="painLevel" Type="char" MaxLength="50" />
+    <Property Name="feeling" Type="char" MaxLength="1000" />
+    <Property Name="bloodPressure" Type="char" MaxLength="50" />
+    <Property Name="trauma" Type="char" MaxLength="50" />
+    <Property Name="vomitAmount" Type="char" MaxLength="50" />
+    <Property Name="feverDgree" Type="char" MaxLength="50" />
+    <Property Name="painLocation" Type="char" MaxLength="50" />
+    <Property Name="timeOfPain" Type="char" MaxLength="50" />
+    <Property Name="havaFever" Type="char" MaxLength="50" />
+    <Property Name="disease" Type="char" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="DialogflowDataModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

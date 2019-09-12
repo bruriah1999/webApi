@@ -8,39 +8,41 @@ namespace Dal
 {
     public static class Class1
     {
-        static DialogflowDataEntities db = new DialogflowDataEntities();
+       // static DialogflowDataEntities db = new DialogflowDataEntities();
 
-        public static users Get(int id)
-        {
-            {
-                try
-                {
-                    return db.users.FirstOrDefault(e => e.id == id);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-        }
+        //public static users Get(int id)
+        //{
+        //    {
+        //        try
+        //        {
+        //  //          return db.users.FirstOrDefault(e => e.id == id);
+        //        }
+        //        catch (Exception)
+        //        {
+        //            throw;
+        //        }
+        //    }
+        //}
         public static void Post(users user)
         {
 
               try
                 {
-                using (DialogflowDataEntities db = new DialogflowDataEntities())
-
+                
+           //     using (DialogflowDataEntities db = new DialogflowDataEntities())
                 {
-             
-                    db.users.Add(user);
-                    db.SaveChanges();
+                  //  db.users.Add(user);
+                    //db.SaveChanges();
+                    
+                    //return true;
+
                }
             }
                 catch (Exception)
                 {
-
-                    throw;
-                }
+                throw;
+                //return false;
+            }
         }
 
     }
