@@ -5,140 +5,40 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="DialogflowDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="char" MaxLength="100" Nullable="false" />
           <Property Name="score" Type="int" Nullable="false" />
           <Property Name="name" Type="char" MaxLength="50" Nullable="false" />
-          <Property Name="url" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="url" Type="char" MaxLength="200" Nullable="false" />
           <Property Name="checked" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="users">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="char" MaxLength="50" Nullable="false" />
-          <Property Name="age" Type="int" Nullable="false" />
-          <Property Name="gender" Type="char" MaxLength="50" Nullable="false" />
-          <Property Name="isDiabetes" Type="bit" Nullable="false" />
-          <Property Name="isCholesterol" Type="bit" Nullable="false" />
-          <Property Name="heart_disease" Type="char" MaxLength="50" Nullable="false" />
-          <Property Name="isObesity" Type="bit" Nullable="false" />
-          <Property Name="isExercise" Type="bit" Nullable="false" />
-          <Property Name="exerciseOften" Type="char" MaxLength="50" />
-          <Property Name="dateExercise" Type="char" MaxLength="50" />
-          <Property Name="isDrug" Type="bit" Nullable="false" />
-          <Property Name="nameDrug" Type="char" MaxLength="50" />
-          <Property Name="isSmoking" Type="bit" Nullable="false" />
-          <Property Name="oftenSmoke" Type="char" MaxLength="50" Nullable="false" />
-          <Property Name="brandSmoke" Type="char" MaxLength="50" />
-          <Property Name="amountTypeSmoke" Type="char" MaxLength="50" />
-          <Property Name="amountSmoke" Type="char" MaxLength="50" Nullable="false" />
-          <Property Name="painLevel" Type="char" MaxLength="50" />
-          <Property Name="feeling" Type="char" MaxLength="1000" Nullable="false" />
-          <Property Name="bloodPressure" Type="char" MaxLength="50" />
-          <Property Name="diastolic" Type="int" />
-          <Property Name="systolic" Type="int" />
-          <Property Name="trauma" Type="char" MaxLength="50" Nullable="false" />
-          <Property Name="vomitAmount" Type="char" MaxLength="50" />
-          <Property Name="feverDgree" Type="char" MaxLength="50" />
-          <Property Name="painLocation" Type="char" MaxLength="50" />
-          <Property Name="timeOfPain" Type="char" MaxLength="50" />
-          <Property Name="havaFever" Type="char" MaxLength="50" />
-          <Property Name="disease" Type="char" MaxLength="50" />
-          <Property Name="score" Type="int" Nullable="false" />
-          <Property Name="date" Type="nchar" MaxLength="10" />
-          <Property Name="idUser" Type="int" Nullable="false" />
-          <Property Name="url" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="date" Type="char" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="DialogflowDataModelStoreContainer">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DialogflowDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="score" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="url" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="200" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="checked" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="users">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="age" Type="Int32" Nullable="false" />
-          <Property Name="gender" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="isDiabetes" Type="Boolean" Nullable="false" />
-          <Property Name="isCholesterol" Type="Boolean" Nullable="false" />
-          <Property Name="heart_disease" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="isObesity" Type="Boolean" Nullable="false" />
-          <Property Name="isExercise" Type="Boolean" Nullable="false" />
-          <Property Name="exerciseOften" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="dateExercise" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="isDrug" Type="Boolean" Nullable="false" />
-          <Property Name="nameDrug" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="isSmoking" Type="Boolean" Nullable="false" />
-          <Property Name="oftenSmoke" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="brandSmoke" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="amountTypeSmoke" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="amountSmoke" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="painLevel" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="feeling" Type="String" MaxLength="1000" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="bloodPressure" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="diastolic" Type="Int32" />
-          <Property Name="systolic" Type="Int32" />
-          <Property Name="trauma" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="vomitAmount" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="feverDgree" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="painLocation" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="timeOfPain" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="havaFever" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="disease" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="score" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="idUser" Type="Int32" Nullable="false" />
-          <Property Name="url" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityContainer Name="DialogflowDataEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="user" EntityType="Self.user" />
-          <EntitySet Name="users" EntityType="Self.users" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -146,17 +46,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DialogflowDataModelStoreContainer" CdmEntityContainer="DialogflowDataEntities">
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DialogflowDataModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="user">
             <EntityTypeMapping TypeName="DialogflowDataModel.user">
               <MappingFragment StoreEntitySet="user">
@@ -166,46 +55,7 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="checked" ColumnName="checked" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="DialogflowDataModel.users">
-              <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="age" ColumnName="age" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="isDiabetes" ColumnName="isDiabetes" />
-                <ScalarProperty Name="isCholesterol" ColumnName="isCholesterol" />
-                <ScalarProperty Name="heart_disease" ColumnName="heart_disease" />
-                <ScalarProperty Name="isObesity" ColumnName="isObesity" />
-                <ScalarProperty Name="isExercise" ColumnName="isExercise" />
-                <ScalarProperty Name="exerciseOften" ColumnName="exerciseOften" />
-                <ScalarProperty Name="dateExercise" ColumnName="dateExercise" />
-                <ScalarProperty Name="isDrug" ColumnName="isDrug" />
-                <ScalarProperty Name="nameDrug" ColumnName="nameDrug" />
-                <ScalarProperty Name="isSmoking" ColumnName="isSmoking" />
-                <ScalarProperty Name="oftenSmoke" ColumnName="oftenSmoke" />
-                <ScalarProperty Name="brandSmoke" ColumnName="brandSmoke" />
-                <ScalarProperty Name="amountTypeSmoke" ColumnName="amountTypeSmoke" />
-                <ScalarProperty Name="amountSmoke" ColumnName="amountSmoke" />
-                <ScalarProperty Name="painLevel" ColumnName="painLevel" />
-                <ScalarProperty Name="feeling" ColumnName="feeling" />
-                <ScalarProperty Name="bloodPressure" ColumnName="bloodPressure" />
-                <ScalarProperty Name="diastolic" ColumnName="diastolic" />
-                <ScalarProperty Name="systolic" ColumnName="systolic" />
-                <ScalarProperty Name="trauma" ColumnName="trauma" />
-                <ScalarProperty Name="vomitAmount" ColumnName="vomitAmount" />
-                <ScalarProperty Name="feverDgree" ColumnName="feverDgree" />
-                <ScalarProperty Name="painLocation" ColumnName="painLocation" />
-                <ScalarProperty Name="timeOfPain" ColumnName="timeOfPain" />
-                <ScalarProperty Name="havaFever" ColumnName="havaFever" />
-                <ScalarProperty Name="disease" ColumnName="disease" />
-                <ScalarProperty Name="score" ColumnName="score" />
                 <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-                <ScalarProperty Name="url" ColumnName="url" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

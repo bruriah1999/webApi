@@ -15,10 +15,11 @@ namespace Dal1
     public partial class user
     {
         public int id { get; set; }
-        public int idUser { get; set; }
+        public string idUser { get; set; }
         public int score { get; set; }
         public string name { get; set; }
         public string url { get; set; }
         public bool @checked { get; set; }
+        public string date { get; set; }
     }
 }
