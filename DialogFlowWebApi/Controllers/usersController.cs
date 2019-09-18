@@ -130,6 +130,21 @@ namespace DialogFlowWebApi.Controllers
             }
             catch (Exception e) { throw e; }
         }
-
+    //    user user = new user();
+    //    string userid = (string)pd.SelectToken("userid");
+    //    user.id = 0;
+    //        user.@checked = false;
+    //        user.date =DateTime.Now.ToString();
+    //        user.url = "https://storage.cloud.google.com/myheartpdfbucket/"+ userid+".html";
+    //        user.idUser = userid;
+    //        user.name = (string) pd.SelectToken("name");
+    //    user.score= (int) pd.SelectToken("score");
+    //        try
+    //        {
+    //            DBConnect c = new DBConnect();
+    //    c.Post(user);
+    //            return Ok();
+    //}
+    //        catch (Exception e) { throw e; }
     }
 }
