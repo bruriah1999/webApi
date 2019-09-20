@@ -17,7 +17,6 @@ namespace DialogFlowWebApi.Controllers
     [RoutePrefix("api/user")]
     public  class UsersController : ApiController
     {
-        
         [HttpGet]
         [Route("getAllNames")]
         public IEnumerable<userWeb> getAllNames()
@@ -70,9 +69,7 @@ namespace DialogFlowWebApi.Controllers
                 throw;
             }
         }
-        [HttpPost]
-        [Route("addUser/{pd}")]
-        public IHttpActionResult Post([FromBody] JObject pd)
+        public void Post([FromBody] JObject pd)
         {
             userWeb user = new userWeb();
             string userid = (string)pd.SelectToken("userid");
@@ -87,7 +84,6 @@ namespace DialogFlowWebApi.Controllers
             {
                 DBConnect c = new DBConnect();
                 c.Post(user);
-                return Ok();
             }
             catch (Exception e) { throw e; }
         }

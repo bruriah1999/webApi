@@ -66,7 +66,7 @@ namespace Dal1
             MySqlCommand cmd = connection.CreateCommand();
             try
             {
-                cmd.CommandText = "SELECT * FROM USER WHERE userid=" + iduser;
+                cmd.CommandText = "SELECT * FROM user WHERE userid=" + iduser;
                 MySqlDataReader dataReader = cmd.ExecuteReader();
             while (dataReader.Read() == true)
             {
@@ -94,7 +94,7 @@ namespace Dal1
             MySqlCommand cmd = connection.CreateCommand();
             try
             {
-                cmd.CommandText = "SELECT * FROM USER WHERE checked=false";
+                cmd.CommandText = "SELECT * FROM user WHERE checked=false";
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 while (dataReader.Read() == true)
                 {
@@ -140,14 +140,19 @@ namespace Dal1
             {
                 connection.Open();
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = "INSERT INTO user(id,iduser,name,date,score,url,checked) VALUES(" + user.id + "," + user.idUser + "," + user.name + "," + user.date + "," + user.score + "," + user.url + "," + user.@checked + "," + ")";
-                MySqlDataReader dataReader = cmd.ExecuteReader();
+                cmd.CommandText = "INSERT INTO user(id,userid,name,date,score,url,checked) VALUES(@id,@userid,@name,@date,@score,@url,@checked)";
+                cmd.Parameters.Add("@id", MySqlDbType.Int64).Value = user.id;
+                cmd.Parameters.Add("@userid", MySqlDbType.String).Value = user.id;
+                cmd.Parameters.Add("@name", MySqlDbType.String).Value = user.name;
+                cmd.Parameters.Add("@date", MySqlDbType.String).Value = user.date;
+                cmd.Parameters.Add("@score", MySqlDbType.Int64).Value = user.score;
+                cmd.Parameters.Add("@url", MySqlDbType.String).Value = user.url;
+                cmd.Parameters.Add("@checked", MySqlDbType.Bit).Value = user.@checked;
+                cmd.ExecuteNonQuery();
                 connection.Close();
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception e) { throw e; }
+
         }
 
 
